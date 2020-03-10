@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title>Dek-D</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            background-color: white;
+        }
+
+        iframe {
+            display: block;
+            background: rgb(255, 255, 255);
+            border: none;
+            height: 100vh;
+            width: 100%;
+            margin-left: auto;
+        }
+
+        .float {
+            position: fixed;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 18px;
+            top: 50px;
+            left: 20px;
+            background-color: #F37A01;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 3px #999;
+        }
+
+        .my-float {
+            margin-top: 22px;
+        }
+
+
+        ul {
+
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: white;
+            box-shadow: 2px 2px 3px #999;
+            position: fixed;
+            height: 100%;
+            left: -200px;
+            overflow: auto;
+        }
+
+        li a {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: black;
+        }
+
+        li a.active {
+            height: 24px;
+            padding: 8px 0px 8px 80%;
+            background-color: #F37A01;
+            color: white;
+            cursor: pointer;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        li label {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .openMenu_menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: white;
+            box-shadow: 2px 2px 3px #999;
+            position: fixed;
+            height: 100vh;
+            overflow: auto;
+            left: 0px;
+            transition: left 300ms;
+        }
+
+        .reOpenMenu_menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: white;
+            box-shadow: 2px 2px 3px #999;
+            position: fixed;
+            height: 100vh;
+            left: 0px;
+            overflow: auto;
+        }
+
+        .closeMenu_menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: white;
+            box-shadow: 2px 2px 3px #999;
+            position: fixed;
+            height: 100vh;
+            overflow: auto;
+            left: -200px;
+            transition: left 300ms;
+        }
+
+        .openMenu_buttonMenu {
+            visibility: hidden;
+            cursor: pointer;
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            top: 50px;
+            left: 20px;
+            background-color: #F37A01;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 3px #999;
+        }
+
+        .closeMenu_buttonMenu {
+            visibility: visible;
+            cursor: pointer;
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            top: 50px;
+            left: 20px;
+            background-color: #F37A01;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 3px #999;
+            transition: visibility 300ms;
+        }
+
+        .openMenu_frame {
+            transition: margin-left 300ms;
+            margin-left: 200px;
+            /* width: 85vw; */
+        }
+
+        .reOpenMenu_frame {
+            /* width: 85vw; */
+            margin-left: 200px;
+        }
+
+        .closeMenu_frame {
+            transition: margin-left 300ms;
+            /* width: 100vw; */
+            margin-left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <a id="buttonMenu" onclick="openMenu()" class="float">
+        <i class="fa fa-bars my-float "></i>
+    </a>
+    <ul id="menu">
+        <li><a class="active" onclick="closeMenu()"><i class="fa fa-bars"></i></a></li>
+        <li><label>Dek-d Menu</label></li>
+        <li><a id="dek-d_button" href="?page=dek-d">Dek-d main</a></li>
+        <li><a id="writer_button" href="?page=writer">Dek-d writer</a></li>
+        <li><a id="school_button" href="?page=school">Dek-d school</a></li>
+        <li><a id="tcas_button" href="?page=tcas">Dek-d tcas</a></li>
+    </ul>
+    <iframe id="frame" name="iframe_bar" src="https://www.dek-d.com/"></iframe>
+</body>
+<script>
+    checkMenu()
+    function openMenu() {
+        document.getElementById('menu').setAttribute("class", "openMenu_menu");
+        document.getElementById('buttonMenu').setAttribute("class", "openMenu_buttonMenu");
+        document.getElementById('frame').setAttribute("class", "openMenu_frame");
+        sessionStorage.setItem('key', true);
+
+    }
+    function closeMenu() {
+        document.getElementById('menu').setAttribute("class", "closeMenu_menu");
+        document.getElementById('buttonMenu').setAttribute("class", "closeMenu_buttonMenu");
+        document.getElementById('frame').setAttribute("class", "closeMenu_frame");
+        sessionStorage.clear();
+
+    }
+    function checkMenu() {
+        let params = (new URL(document.location)).searchParams;
+        let page = params.get('page');
+        if (page) {
+            console.log()
+            switch (page) {
+                case "dek-d":
+                    document.getElementById("frame").setAttribute("src", "https://www.dek-d.com/");
+                    document.getElementById("dek-d_button").style.backgroundColor = "#555"
+                    document.getElementById("dek-d_button").style.color = "white"
+                    break;
+                case "writer":
+                    document.getElementById("frame").setAttribute("src", "https://www.dek-d.com/home/writer");
+                    document.getElementById("writer_button").style.backgroundColor = "#555"
+                    document.getElementById("writer_button").style.color = "white"
+                    break;
+                case "school":
+                    document.getElementById("frame").setAttribute("src", "https://school.dek-d.com/");
+                    document.getElementById("school_button").style.backgroundColor = "#555"
+                    document.getElementById("school_button").style.color = "white"
+                    break;
+                    case "tcas":
+                    document.getElementById("frame").setAttribute("src", "https://www.dek-d.com/tcas/");
+                    document.getElementById("tcas_button").style.backgroundColor = "#555"
+                    document.getElementById("tcas_button").style.color = "white"
+                    break;
+                default:
+                    alert("not have page")
+            }
+        }
+        let data = sessionStorage.getItem('key');
+        if (data) {
+            document.getElementById('menu').setAttribute("class", "reOpenMenu_menu");
+            document.getElementById('buttonMenu').setAttribute("class", "openMenu_buttonMenu");
+            document.getElementById('frame').setAttribute("class", "reOpenMenu_frame");
+        }
+    }
+</script>
+
+</html>

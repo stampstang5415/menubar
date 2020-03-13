@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 
 <head>
@@ -48,14 +48,14 @@
         }
 
         /* Menu */
-        ul {
-
-            list-style-type: none;
+        .menu {
+            font-size: 14px;
+            font-family: KaLaTeXaDisplay,sans-serif;
             margin: 0;
             padding: 0;
             width: 200px;
             background-color: white;
-            box-shadow: 2px 2px 3px #999;
+            box-shadow: none;
             position: fixed;
             height: 100%;
             overflow: auto;
@@ -70,9 +70,17 @@
             color: black;
         }
 
+        li.header {
+            position: -webkit-sticky;
+            /* Safari */
+            position: sticky;
+            top: 0;
+        }
+
         li a.active {
             display: flex;
             justify-content: space-between;
+            list-style-type: none;
             background-color: #F37A01;
             color: white;
             cursor: pointer;
@@ -85,7 +93,8 @@
 
         /* transition */
         .openMenu_menu {
-            list-style-type: none;
+            font-size: 14px;
+            font-family: KaLaTeXaDisplay,sans-serif;
             margin: 0;
             padding: 0;
             width: 200px;
@@ -99,7 +108,8 @@
         }
 
         .reOpenMenu_menu {
-            list-style-type: none;
+            font-size: 14px;
+            font-family: KaLaTeXaDisplay,sans-serif;
             margin: 0;
             padding: 0;
             width: 200px;
@@ -112,12 +122,13 @@
         }
 
         .closeMenu_menu {
-            list-style-type: none;
+            font-size: 14px;
+            font-family: KaLaTeXaDisplay,sans-serif;
             margin: 0;
             padding: 0;
             width: 200px;
             background-color: white;
-            box-shadow: 2px 2px 3px #999;
+            box-shadow: none;
             position: fixed;
             height: 100%;
             overflow: auto;
@@ -180,20 +191,115 @@
     <a id="buttonMenu" onclick="openMenu()" class="float">
         <i class="fa fa-bars my-float "></i>
     </a>
-    <ul id="menu">
-        <li><a class="active" onclick="closeMenu()"><label>Dek-d Menu</label><i class="fa fa-bars"></i></a></li>
-        <li><a id="dek-d_button" href="?page=dek-d">Dek-d main</a></li>
-        <li><a id="writer_button" href="?page=writer">Dek-d writer</a></li>
-        <li><a id="school_button" href="?page=school">Dek-d school</a></li>
-        <li><a id="tcas_button" href="?page=tcas">Dek-d tcas</a></li>
-        <li><a id="cph_button" href="?page=cph">Dek-d Course Price history</a></li>
-        <li><a id="cptm_button" href="?page=cptm">Dek-d Course Price time machine</a></li>
+    <ul id="menu" class="menu" >
+        <!-- <li class="header"><a class="active" onclick="closeMenu()">Dek-d Menu<i class="fa fa-bars"></i></a></li>
+        <li><a id="admin_button" href="?page=admin"><i class="fa fa-list"></i> Admin</a></li>
+        <li><a class="active"> - Goals </a></li>
+        <li><a id="goals_button" href="?page=goals"><i class="fa fa-line-chart"></i> สรุป Goal</a></li>
+        <li><a class="active"> - คอร์ส </a></li>
+        <li><a id="course_button" href="?page=course"> <i class="fa fa-list"></i> รายการคอร์ส</a></li>
+        <li><a id="shipment_button" href="?page=shipment"><i class="fa fa-truck"></i> ส่งพัสดุ (Shipment)</a></li>
+        <li><a id="shipment_items_button" href="?page=shipment_items"><i class="fa fa-book"></i> รายการหนังสือ (Shipment
+                Item)</a></li>
+        <li><a class="active"> - User info (หา user id จาก username) </a></li>
+        <li><a id="user_button" href="?page=user"><i class="fa fa-user"></i> User info</a></li>
+        <li><a class="active"> - Voucher code </a></li>
+        <li><a id="voucher_create_button" href="?page=voucher_create"><i class="fa fa-credit-card"></i> สร้าง Voucher
+                Code</a></li>
+        <li><a id="voucher_button" href="?page=voucher"> <i class="fa fa-credit-card-alt"></i> ข้อมูล Voucher Code</a>
+        </li>
+        <li><a id="voucher_report_button" href="?page=voucher_report"> <i class="fa fa-book"></i> รายงาน Voucher
+                Code</a></li>
+        <li><a class="active"> - Promotion Code </a></li>
+        <li><a id="promotion_create_button" href="?page=promotion_create"><i class="fa fa-tag"></i> สร้าง Promotion
+                Code</a></li>
+        <li><a id="promotion_button" href="?page=promotion"> <i class="fa fa-tags"></i> ข้อมูล Promotion Code</a></li>
+        <li><a id="promotion-usage_button" href="?page=promotion-usage"><i class="fa fa-line-chart"></i> ข้อมูลการใช้งาน
+                Promotion Code</a></li>
+        <li><a class="active"> - การชำระเงิน </a></li>
+        <li><a id="transaction_button" href="?page=transaction"> <i class="fa fa-book"></i> รายการชำระเงิน
+                (Transaction)</a>
+        </li>
+        <li><a id="transaction_transfer_button" href="?page=transaction_transfer"><i class="fa fa-envelope"></i>
+                รายการโอนเงินแบบนิติบุคคล (Transfer)</a></li>
+        <li><a id="tax_Invoice_button" href="?page=tax_Invoice"><i class="fa fa-file"></i> รายการขอใบกำกับภาษี (Tax
+                Invoice)</a></li>
+        <li><a class="active"> - Accounting </a></li>
+        <li><a id="transaction_report_button" href="?page=transaction_report"><i class="fa fa-book"></i>
+                สรุปยอดขายแบบละเอียด (Report)</a></li>
+        <li><a id="transaction_report_annual_button" href="?page=transaction_report_annual"><i
+                    class="fa fa-calendar"></i> รายงานสรุปยอดขายรายปี (Annual Report)</a></li>
+        <li><a id="transaction_report_amortization_button" href="?page=transaction_report_amortization"><i
+                    class="fa fa-table"></i> รายงานสรุปค่าตัดจำหน่าย
+                (Amortization)</a></li>
+        <li><a id="course_price_timeMachine_button" href="?page=course_price_timeMachine"><i class="fa fa-history"></i>
+                ตรวจสอบราคาคอร์สย้อนหลัง (Course Price Time Machine)</a></li>
+        <li><a id="course_price_history_button" href="?page=course_price_history"> <i class="fa fa-file-text"></i>
+                ประวัติการเปลี่ยนแปลงราคาคอร์ส (Course Price History)</a></li>
+        <li><a class="active">- Testimonial </a></li>
+        <li><a id="testimonial_button" href="?page=testimonial"><i class="fa fa-book"></i> รายงานการตอบแบบสอบถาม
+                (Testimonial)</a></li>
+        <li><a class="active"> - Group </a></li>
+        <li><a id="group_member_info_button" href="?page=group_member_info"> <i class="fa fa-users"></i> ข้อมูล
+                Member</a></li> -->
+                <li class="header"><a class="active" onclick="closeMenu()">Dek-d Menu<i class="fa fa-bars"></i></a></li>
+        <li><a id="admin_button" href="?page=admin"><i class="fa fa-list"></i> Admin</a></li>
+        <li><a class="active"> - Goals </a></li>
+        <li><a id="goals_button" href="?page=goals"><i class="fa fa-line-chart"></i> สรุป Goal</a></li>
+        <li><a class="active"> - คอร์ส </a></li>
+        <li><a id="course_button" href="?page=course"> <i class="fa fa-list"></i> รายการคอร์ส</a></li>
+        <li><a id="shipment_button" href="?page=shipment"><i class="fa fa-truck"></i> ส่งพัสดุ (Shipment)</a></li>
+        <li><a id="shipment_items_button" href="?page=shipment_items"><i class="fa fa-book"></i> รายการหนังสือ (Shipment
+                Item)</a></li>
+        <li><a class="active"> - User info (หา user id จาก username) </a></li>
+        <li><a id="user_button" href="?page=user"><i class="fa fa-user"></i> User info</a></li>
+        <li><a class="active"> - Voucher code </a></li>
+        <li><a id="voucher_create_button" href="?page=voucher_create"><i class="fa fa-credit-card"></i> สร้าง Voucher
+                Code</a></li>
+        <li><a id="voucher_button" href="?page=voucher"> <i class="fa fa-credit-card-alt"></i> ข้อมูล Voucher Code</a>
+        </li>
+        <li><a id="voucher_report_button" href="?page=voucher_report"> <i class="fa fa-book"></i> รายงาน Voucher
+                Code</a></li>
+        <li><a class="active"> - Promotion Code </a></li>
+        <li><a id="promotion_create_button" href="?page=promotion_create"><i class="fa fa-tag"></i> สร้าง Promotion
+                Code</a></li>
+        <li><a id="promotion_button" href="?page=promotion"> <i class="fa fa-tags"></i> ข้อมูล Promotion Code</a></li>
+        <li><a id="promotion-usage_button" href="?page=promotion-usage"><i class="fa fa-line-chart"></i> ข้อมูลการใช้งาน
+                Promotion Code</a></li>
+        <li><a class="active"> - การชำระเงิน </a></li>
+        <li><a id="transaction_button" href="?page=transaction"> <i class="fa fa-book"></i> รายการชำระเงิน
+                (Transaction)</a>
+        </li>
+        <li><a id="transaction_transfer_button" href="?page=transaction_transfer"><i class="fa fa-envelope"></i>
+                รายการโอนเงินแบบนิติบุคคล (Transfer)</a></li>
+        <li><a id="tax_Invoice_button" href="?page=tax_Invoice"><i class="fa fa-file"></i> รายการขอใบกำกับภาษี (Tax
+                Invoice)</a></li>
+        <li><a class="active"> - Accounting </a></li>
+        <li><a id="transaction_report_button" href="?page=transaction_report"><i class="fa fa-book"></i>
+                สรุปยอดขายแบบละเอียด (Report)</a></li>
+        <li><a id="transaction_report_annual_button" href="?page=transaction_report_annual"><i
+                    class="fa fa-calendar"></i> รายงานสรุปยอดขายรายปี (Annual Report)</a></li>
+        <li><a id="transaction_report_amortization_button" href="?page=transaction_report_amortization"><i
+                    class="fa fa-table"></i> รายงานสรุปค่าตัดจำหน่าย
+                (Amortization)</a></li>
+        <li><a id="course_price_timeMachine_button" href="?page=course_price_timeMachine"><i class="fa fa-history"></i>
+                ตรวจสอบราคาคอร์สย้อนหลัง (Course Price Time Machine)</a></li>
+        <li><a id="course_price_history_button" href="?page=course_price_history"> <i class="fa fa-file-text"></i>
+                ประวัติการเปลี่ยนแปลงราคาคอร์ส (Course Price History)</a></li>
+        <li><a class="active">- Testimonial </a></li>
+        <li><a id="testimonial_button" href="?page=testimonial"><i class="fa fa-book"></i> รายงานการตอบแบบสอบถาม
+                (Testimonial)</a></li>
+        <li><a class="active"> - Group </a></li>
+        <li><a id="group_member_info_button" href="?page=group_member_info"> <i class="fa fa-users"></i> ข้อมูล
+                Member</a></li>
     </ul>
     <div id="frame">
-        <iframe id="iframe" name="iframe_bar" src="https://www.dek-d.com/"></iframe>
+        <iframe id="iframe" name="iframe_bar" src="https://wwwback.dek-d.com/school/admin"></iframe>
     </div>
 </body>
 <script>
+    document.cookie = 'same-site-cookie=foo; SameSite=Lax';
+    document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
     checkMenu()
     function openMenu() {
         document.getElementById('menu').setAttribute("class", "openMenu_menu");
@@ -214,33 +320,99 @@
         document.getElementById(nameId).style.color = "white"
     }
     function checkMenu() {
+        document.cookie = 'same-site-cookie=foo; SameSite=Lax';
+        document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
         let params = (new URL(document.location)).searchParams;
         let page = params.get('page');
         if (page) {
             switch (page) {
-                case "dek-d":
-                    document.getElementById("iframe").setAttribute("src", "https://www.dek-d.com/");
-                    changeMenuColor("dek-d_button");
+                case "admin":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin");
+                    changeMenuColor("admin_button");
                     break;
-                case "writer":
-                    document.getElementById("iframe").setAttribute("src", "https://www.dek-d.com/home/writer");
-                    changeMenuColor("writer_button");
+                case "goals":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/goals");
+                    changeMenuColor("goals_button");
                     break;
-                case "school":
-                    document.getElementById("iframe").setAttribute("src", "https://school.dek-d.com/");
-                    changeMenuColor("school_button");
+                case "course":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/course/");
+                    changeMenuColor("course_button");
                     break;
-                case "tcas":
-                    document.getElementById("iframe").setAttribute("src", "https://www.dek-d.com/tcas/");
-                    changeMenuColor("tcas_button");
+                case "shipment":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/shipment/");
+                    changeMenuColor("shipment_button");
                     break;
-                case "cph":
-                    document.getElementById("iframe").setAttribute("src", "file:///D:/projects/profit_form/courses_price_history.html");
-                    changeMenuColor("cph_button");
+                case "shipment_items":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/shipment/items");
+                    changeMenuColor("shipment_items_button");
                     break;
-                case "cptm":
-                    document.getElementById("iframe").setAttribute("src", "file:///D:/projects/profit_form/courses_price_time_machine.html");
-                    changeMenuColor("cptm_button");
+                case "user":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/myGod2011/3-8.php");
+                    changeMenuColor("user_button");
+                    break;
+                case "voucher_create":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/voucher/create/");
+                    changeMenuColor("voucher_create_button");
+                    break;
+                case "voucher":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/voucher/");
+                    changeMenuColor("voucher_button");
+                    break;
+                case "voucher_report":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/voucher/report/");
+                    changeMenuColor("voucher_report_button");
+                    break;
+                case "promotion_create":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/promotion/create/");
+                    changeMenuColor("promotion_create_button");
+                    break;
+                case "promotion":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/promotion/");
+                    changeMenuColor("promotion_button");
+                    break;
+                case "promotion-usage":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin-react/promotion-usage/");
+                    changeMenuColor("promotion-usage_button");
+                    break;
+                case "transaction":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/transaction/");
+                    changeMenuColor("transaction_button");
+                    break;
+                case "transaction_transfer":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/transaction/?channel=transfer");
+                    changeMenuColor("transaction_transfer_button");
+                    break;
+                case "tax_Invoice":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/transaction/?status=S&amp;typeInvoice=1");
+                    changeMenuColor("tax_Invoice_button");
+                    break;
+                case "transaction_report":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/transaction/report/");
+                    changeMenuColor("transaction_report_button");
+                    break;
+                case "transaction_report_annual":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/transaction/report/annual");
+                    changeMenuColor("transaction_report_annual_button");
+                    break;
+                case "transaction_report_amortization":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/transaction/report/amortization/");
+                    changeMenuColor("transaction_report_amortization_button");
+                    break;
+                case "course_price_timeMachine":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/course/price/timeMachine/");
+                    changeMenuColor("course_price_timeMachine_button");
+                    break;
+                case "course_price_history":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/course/price/history/");
+                    changeMenuColor("course_price_history_button");
+                    break;
+                case "testimonial":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/testimonial/");
+                    changeMenuColor("testimonial_button");
+                    break;
+                case "group_member_info":
+                    document.getElementById("iframe").setAttribute("src", "https://wwwback.dek-d.com/school/admin/group/member/info/");
+                    changeMenuColor("group_member_info_button");
                     break;
                 default:
                     alert("not have page")
